@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import { useAppSelector } from './hooks/redux';
+import LoginPage from './pages/loginPage/LoginPage';
+import NotFoundPage from './pages/notFoundPage/NotFoundPage';
+import MainPage from './pages/mainPage/MainPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './app.scss';
+
+export default function App() {
+    const routes = useAppSelector(state => state.storeRoutes.value);
+
+    return (
+        <div className="app">
+            <Routes>
+                <Route 
+                    path={routes.main.path}
+                    element={<LoginPage/>}
+                />
+                <Route 
+                    path={routes.login.path}
+                    element={<LoginPage/>}
+                />
+                <Route 
+                    path={routes.content.path}
+                    element={<MainPage/>}
+                />
+                <Route 
+                    path={routes.notFound.path}
+                    element={<NotFoundPage/>}
+                />
+            </Routes>
+        </div>
+    );
 }
-
-export default App;

@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300&display=swap');
+
+$header-footer-height: clamp(70px, 15%, 170px);
+
+$theme-border-color: var(--theme-border-color);
+$theme-border-particle: var(--theme-border-particle);
+$theme-footer-header-color: var(--theme-footer-header-color);
+$theme-layer-back-color: var(--theme-layer-back-color);
+$theme-layer-front-color: var(--theme-layer-front-color);
+$theme-route-color: var(--theme-route-color);
+$theme-text-color: var(--theme-text-color);

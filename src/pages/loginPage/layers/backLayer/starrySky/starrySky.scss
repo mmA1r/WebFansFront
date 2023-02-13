@@ -1,0 +1,20 @@
+@import '../../../../../consts.scss';
+
+.starry-sky {
+    position: absolute;
+    top: $header-footer-height;
+    width: 100%;
+    height: calc(100vh - 2 * $header-footer-height);
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    opacity: 0;
+    background-color: $theme-border-color;
+    border-radius: 10px;
+    box-shadow: 0px 0px 0px 0px $theme-border-particle;
+    color: $theme-border-particle;
+    will-change: box-shadow;
+}
