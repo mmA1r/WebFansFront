@@ -4,11 +4,12 @@ $prefer-background-texture: url('../../../../assets/textures/PaperTexture.png');
 .layer-back {
     inset: 0;
     position: absolute;
-    width: 230%;
+    width: 200%;
     height: 100vh;
-    left: -20%;
+    left: -80%;
     background-color: $theme-layer-back-color;
     background-image: $prefer-background-texture;
     z-index: -1;
     will-change: transform;
+    overflow: hidden;
 }

@@ -7,7 +7,7 @@ export default function LayerBack() {
     return(
         <div
             className={'layer-back'}
-            data-swiper-parallax={'68%'}
+            data-swiper-parallax={'34%'}
         >
             <StarrySky/>
         </div>

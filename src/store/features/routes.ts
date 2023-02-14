@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import ROUTES from "../../pages/routes/routes";
 
-interface RoutesState {
+interface IRoutesState {
     value: any
 }
 
-const initialState: RoutesState = {
+const initialState: IRoutesState = {
     value: ROUTES,
 }
 
@@ -19,5 +19,4 @@ export const storeRoutes = createSlice({
     }
 });
 
-//export const { routes } = storeRoutes.actions; // Пока не нужны никуда
 export default storeRoutes.reducer;

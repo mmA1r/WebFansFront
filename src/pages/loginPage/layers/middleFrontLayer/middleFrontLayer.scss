@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Junge&display=swap');
+@import '../../../../consts.scss';
+
+$background-texture: url('../../../../assets/textures/PaperFibers.png');
+
+.layer-middle-front {
+    z-index: 3;
+    width: clamp(300px, 40vw, 400px);
+    height: clamp(350px, 60vh, 800px);
+    background-color: $theme-layer-front-color;
+    top: 50%;
+    left: 50%;
+    translate: (-50% -50%);
+    background-image: $background-texture;
+    border: 1px solid $theme-border-color;
+}
+
+.particle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background-color: $theme-border-particle;
+    box-shadow: 0px 0px 2px 1px $theme-border-color;
+    will-change: transform;
+}
+
+.right-top-praticle0, .right-top-praticle1 {
+    right: -1px;
+    top: calc(50% - 1px);
+}
+.right-bottom-praticle0, .right-bottom-praticle1 {
+    right: -1px;
+    bottom: calc(50% - 1px);
+}
+.left-top-praticle0, .left-top-praticle1 {
+    left: -1px;
+    top: calc(50% - 1px);
+}
+.left-bottom-praticle0, .left-bottom-praticle1 {
+    left: -1px;
+    bottom: calc(50% - 1px);
+}
+
+.login-title {
+    position: absolute;
+    left: 50%;
+    top: 4.5%;
+    transform: translate(-50%);
+    color: $theme-border-particle;
+
+    font-size: 32px;
+    font-family: 'Junge', serif;
+    letter-spacing: 2px;
+
+    user-select: none;
+}

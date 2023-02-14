@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import Swiper, { SwiperOptions, Navigation, Parallax } from "swiper";
 import { useAppSelector } from './hooks/redux';
 import LoginPage from './pages/loginPage/LoginPage';
 import NotFoundPage from './pages/notFoundPage/NotFoundPage';
