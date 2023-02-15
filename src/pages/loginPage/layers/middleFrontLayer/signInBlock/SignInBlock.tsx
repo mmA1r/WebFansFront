@@ -1,8 +1,9 @@
 import { FC, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
+import ThemeChangerButton from '../modules/themeChangeButton/ThemeChangeButton';
+import Inputs from '../modules/inputs/Inputs';
 
 import './signInBlock.scss';
-import ThemeChangerButton from '../modules/themeChangeButton/ThemeChangeButton';
 
 interface ISignInBlock {
 }
@@ -30,6 +31,7 @@ const SignInBlock: FC<ISignInBlock> = () => {
         <div className='sign-in-block'>
             <span className='login-title'>SIGN IN</span>
             <ThemeChangerButton/>
+            <Inputs types={types} title={'sign in'} routeButton={{class: 'route-to-sign-up', title: 'Sign Up'}}/>
         </div>
     );
 }

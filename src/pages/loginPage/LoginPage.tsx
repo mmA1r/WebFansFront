@@ -23,23 +23,21 @@ const LoginPage: FC<ILoginPage> = () => {
     const dispatch = useAppDispatch();
     const swiperRef: any = React.useRef();
 
+    var reqId: any;
+    var mouseX: number | undefined;
+    var mouseY: number | undefined;
+    var mult: number = 0.03;
+
     const setIndex: ISetIndex = (index) => {
-        //swiperRef.current.removeEventListener('mousemove', () => parallaxMove);
         const timeout: any = setTimeout(() => {
             dispatch(changeSide(index));
         }, 250);
         return () => clearTimeout(timeout);
     }
 
-    const parallaxMove = function(e: MouseEvent<HTMLElement>, width: number, height: number, isAnimating: boolean) {
-        const vectX = width - e.pageX;
-        const vectY = height -  e.pageY;
-        if(!isAnimating) {
-            gsap.to('.layer-back', {
-                x: Math.floor((vectX) * 0.03),
-                y: Math.floor((vectY) * 0.03),
-            });
-        }
+    const findMouseVector = function(e: MouseEvent<HTMLElement>, width: number, height: number) {
+        mouseX = width - e.pageX;
+        mouseY = height - e.pageY;
     }
 
     function nextSlide():void {
@@ -58,23 +56,51 @@ const LoginPage: FC<ILoginPage> = () => {
         const widthValue = layerWidth ? layerWidth / 2 : 400;
         const heightValue = layerHeight ? layerHeight : 400;
 
-        swiperElem.addEventListener('mousemove', (e:any) => parallaxMove(e, widthValue, heightValue, swiperElem.swiper.animating));
+        swiperElem.addEventListener('mousemove', (e:any) => findMouseVector(e, widthValue, heightValue));
         document.querySelector('.route-to-sign-up')?.addEventListener('click', nextSlide);
         document.querySelector('.route-to-sign-in')?.addEventListener('click', prevSlide);
+        
+        parallaxMove();
 
         return () => {
-            swiperElem.removeEventListener('mousemove', () => parallaxMove);
+            swiperElem.removeEventListener('mousemove', findMouseVector);
+            cancelAnimationFrame(reqId);
         }
     });
+
+    function onEnd() {
+        mult = 0.001;
+    }
+
+    function parallaxMove():void {
+        const swiper: any = swiperRef.current.swiper;
+        const isAnimating: boolean = swiper.animating;
+        const slideIndex: number = swiper.activeIndex;
+        if(mouseX && mouseY && !isAnimating) {
+            if(mult < 0.03) {
+                mult += 0.001;
+            }
+            gsap.set('.layer-back', {
+                transform: `
+                    translate3d(calc(${slideIndex ? '34%' : '0%'} + ${Math.floor((mouseX) * mult)}px), 
+                    ${Math.floor((mouseY) * mult)}px, 
+                    0px)
+                `,
+            });
+        }
+        reqId = requestAnimationFrame(parallaxMove);
+    }
+
 
     return(
             <Swiper
                 modules={[Navigation, Parallax]}
-                //allowTouchMove={false}
+                allowTouchMove={false}
                 speed={1000}
                 navigation={true}
                 parallax={true}
                 onSlideChange={(swiper) => setIndex(swiper.activeIndex)}
+                onSlideChangeTransitionEnd={() => onEnd()}
                 ref={swiperRef}
             >
                 <BackLayer/>

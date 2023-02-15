@@ -6,7 +6,7 @@ import currentSlide from "./features/currentSlide";
 
 const rootReducer = combineReducers({
     storeRoutes,
-    currentSlide
+    currentSlide,
 });
 
 export const setupStore = () => {

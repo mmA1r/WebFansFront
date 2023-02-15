@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 
 import './signUpBlock.scss';
 import ThemeChangerButton from '../modules/themeChangeButton/ThemeChangeButton';
+import Inputs from '../modules/inputs/Inputs';
 
 interface ISignUpBlock {
 }
@@ -29,6 +30,7 @@ const SignUpBlock: FC<ISignUpBlock> = () => {
         <div className="sign-up-block">
             <span className='login-title'>SIGN UP</span>
             <ThemeChangerButton/>
+            <Inputs types={types} title={'sign up'} routeButton={{class: 'route-to-sign-in', title: 'Sign In'}}/>
         </div>
     );
 }
