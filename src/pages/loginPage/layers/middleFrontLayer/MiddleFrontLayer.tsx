@@ -48,7 +48,7 @@ const MiddleFrontLayer: FC<IMiddleFrontLayer> = ({ slideNumber }) => {
     return(
         <div 
             data-swiper-parallax={'8%'} 
-            className="slider-layer layer-middle-front" 
+            className="layer-middle-front slider-layer" 
             ref={loginBlockRef}
         >
             {slideNumber ? <SignUpBlock/> : <SignInBlock/>}

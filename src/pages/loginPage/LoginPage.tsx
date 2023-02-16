@@ -7,9 +7,10 @@ import { gsap } from 'gsap';
 
 import BackLayer from "./layers/backLayer/BackLayer";
 import MiddleLayer from "./layers/middleLayer/MiddleLayer";
+import MiddleFrontLayer from './layers/middleFrontLayer/MiddleFrontLayer';
 
 import './loginPage.scss';
-import MiddleFrontLayer from './layers/middleFrontLayer/MiddleFrontLayer';
+
 
 interface ILoginPage {
 
@@ -79,6 +80,8 @@ const LoginPage: FC<ILoginPage> = () => {
         if(mouseX && mouseY && !isAnimating) {
             if(mult < 0.03) {
                 mult += 0.001;
+            } else {
+                mult = 0.03;
             }
             gsap.set('.layer-back', {
                 transform: `
@@ -97,7 +100,7 @@ const LoginPage: FC<ILoginPage> = () => {
                 modules={[Navigation, Parallax]}
                 allowTouchMove={false}
                 speed={1000}
-                navigation={true}
+                navigation={false}
                 parallax={true}
                 onSlideChange={(swiper) => setIndex(swiper.activeIndex)}
                 onSlideChangeTransitionEnd={() => onEnd()}
