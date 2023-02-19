@@ -1,5 +1,5 @@
 export default function MainPage() {
     return(
-        <div></div>
+        <div className="main-page"></div>
     );
 }

@@ -1,5 +1,7 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { gsap } from 'gsap';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../../../../../hooks/redux';
 import RouteButton from './routeButton/RouteButton';
 import Server from '../../../../../../services/server/Server';
 
@@ -17,6 +19,9 @@ type InputValue = string | undefined;
 
 const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
     const regex: RegExp = /^[A-Za-z0-9_-]{3,16}$/;
+    const [message, setMessage] = useState('Login is already in use');
+    const routes: any = useAppSelector((state) => state.storeRoutes.value);
+    const navigate: NavigateFunction = useNavigate();
 
     function mouseEnterHandler() {
         const button: DivElem = document.querySelector('.login-button');
@@ -53,7 +58,7 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
         });
         gsap.to('.border-left, .border-right', {
             opacity: 1,
-            duration:0.5
+            duration: 0.5
         });
     }
 
@@ -73,34 +78,22 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
             if(regex.test(loginValue) && regex.test(passwordValue)) {
                 const data: boolean | null = await Server.login(loginValue, passwordValue);
                 if(data) {
-                    //if(loginInput || passwordInput || ) {
-                    //    loginInput.value = '';
-                    //}
+                    showSuccessMessage();
+                    coverInputs('login');
+                    const tl1: NodeJS.Timeout = setTimeout(() => {
+                        clearInputs([loginInput, passwordInput]);
+                        clearTimeout(tl1);
+                    }, 300);
+                    const tl2: NodeJS.Timeout = setTimeout(() => {
+                        navigate(routes.content.path);
+                        clearTimeout(tl2);
+                    }, 1100);
+                } else {
+                    showErrorMessage(loginInput, passwordInput);
                 }
             }
         }
-        if(!loginValue || !regex.test(loginValue)) {
-            gsap.to('.login-input', {
-                borderColor: 'red',
-                duration: 0.08,
-                repeat: 5,
-                yoyo: true
-            });
-            if(loginInput) {
-                loginInput.value = '';
-            }
-        }
-        if(!passwordValue || !regex.test(passwordValue)) {
-            gsap.to('.password-input', {
-                borderColor: 'red',
-                duration: 0.08,
-                repeat: 5,
-                yoyo: true
-            });
-            if(passwordInput) {
-                passwordInput.value = '';
-            }
-        }
+        checkInputs([loginInput, passwordInput]);
     }
 
     async function signUp() {
@@ -114,65 +107,108 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
             if(regex.test(nameValue) && regex.test(loginValue) && regex.test(passwordValue)) {
                 const data: { data: boolean } = await Server.registration(nameValue, loginValue, passwordValue);
                 if(data.data) {
-                    if(nameInput) {
-                        nameInput.value = '';
-                    }
-                    if(loginInput) {
-                        loginInput.value = '';
-                    }
-                    if(passwordInput) {
-                        passwordInput.value = '';
-                    }
-                    setTimeout(() => {
+                    coverInputs('registration');
+                    showSuccessMessage();
+                    const tl: NodeJS.Timeout = setTimeout(() => {
+                        clearInputs([nameInput, loginInput, passwordInput]);
                         const button: HTMLButtonElement | null = document.querySelector('.route-to-sign-in');
                         button?.click();
-                    }, 300)
+                        clearTimeout(tl);
+                    }, 500);
                 } else {
-                    //добавить сообщение хз
+                    showErrorMessage(loginInput);
                 }
             }
         }
-        if(!nameValue || !regex.test(nameValue)) {
-            gsap.to('.name-input', {
-                borderColor: 'red',
-                duration: 0.08,
-                repeat: 5,
-                yoyo: true
-            });
-            if(nameInput) {
-                nameInput.value = '';
-            }
+        checkInputs([nameInput, loginInput, passwordInput]);
+    }
+
+    function showErrorMessage(loginInput: Input, passwordInput: Input = null): void {
+        if(passwordInput) {
+            setMessage('Invalid login or password');
+        } else {
+            setMessage('Login is already in use');
         }
-        if(!loginValue || !regex.test(loginValue)) {
-            gsap.to('.login-input', {
-                borderColor: 'red',
-                duration: 0.08,
-                repeat: 5,
-                yoyo: true
-            });
+
+        gsap.to('.info-message', {
+            top: '0',
+            duration: 0.8,
+            ease: 'bounce.out'
+        });
+        const tl1: NodeJS.Timeout = setTimeout(() => {
             if(loginInput) {
                 loginInput.value = '';
+                loginInput.focus();
             }
-        }
-        if(!passwordValue || !regex.test(passwordValue)) {
-            gsap.to('.password-input', {
-                borderColor: 'red',
-                duration: 0.08,
-                repeat: 5,
-                yoyo: true
-            });
             if(passwordInput) {
                 passwordInput.value = '';
             }
-        }
+            clearTimeout(tl1);
+        }, 300);
+        const tl2: NodeJS.Timeout = setTimeout(() => {
+            gsap.to('.info-message', {
+                top: '-100%',
+                duration: 1,
+                ease: 'power2.in'
+            });
+            clearTimeout(tl2);
+        }, 1500);
+    }
+
+    function showSuccessMessage() {
+        gsap.to('.succsess-message', {
+            opacity: 1,
+            textShadow: '0px 0px 1px 1px',
+            repeat: 1,
+            duration: 0.05,
+            delay: 0,
+            repeatDelay: 0.3,
+            yoyo: true
+        });
+    }
+
+    function checkInputs(inputsArr: Input[]): void {
+        inputsArr.forEach(input => {
+            const inputValue: InputValue = input?.value;
+            if(!inputValue || !regex.test(inputValue)) {
+                gsap.to(input, {
+                    borderColor: 'red',
+                    duration: 0.08,
+                    repeat: 5,
+                    yoyo: true
+                });
+                if(input) {
+                    input.value = '';
+                }
+            }
+        });
+    }
+
+    function clearInputs(inputsArr: Input[]): void {
+        inputsArr.forEach(input => {
+            if(input) {
+                input.value = '';
+            }
+        });
+    }
+
+    function coverInputs(type: string): void {
+        gsap.to(`.${type}-page-input-cover`, {
+            width: '100%',
+            duration: 0.5,
+            repeat: 1,
+            yoyo: true
+        });
     }
 
     return(
         <div className='info-submit-block'>
+            <div className='info-message'>{message}</div>
             <div className='inputs-form'>
                 {types.map(type => {
                     return (
                         <div key={type} className={`input-wrapper ${type}-input`}>
+                            <div className={`input-cover ${types.length === 2 ? 'login-page-input-cover' : 'registration-page-input-cover'}`}/>
                             <input
                                 onKeyUp={send}
                                 className={`user-input ${type}-input-${types.length === 2 ? 'login-page' : 'registration-page'}`} 

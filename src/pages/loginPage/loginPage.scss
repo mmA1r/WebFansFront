@@ -65,3 +65,19 @@
 .constellation-path {
     stroke: $theme-text-color;
 }
+
+.succsess-message {
+    position: absolute;
+    top: 5%;
+    line-height: 40px;
+    text-align: center;
+    width: 100%;
+    min-height: 40px;
+    font-size: 20px;
+    font-family: 'Junge', serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: $theme-text-color;
+    opacity: 0;
+    z-index: 6;
+}

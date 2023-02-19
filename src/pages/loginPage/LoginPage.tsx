@@ -115,6 +115,7 @@ const LoginPage: FC<ILoginPage> = () => {
                     <MiddleLayer slideNumber={1}/>
                     <MiddleFrontLayer slideNumber={1}/>
                 </SwiperSlide>
+                <div className='succsess-message'>success</div>
             </Swiper>
     );
 }
