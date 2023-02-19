@@ -1,9 +1,10 @@
 import { FC, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
-
-import './signUpBlock.scss';
 import ThemeChangerButton from '../modules/themeChangeButton/ThemeChangeButton';
 import Inputs from '../modules/inputs/Inputs';
+
+import './signUpBlock.scss';
+
 
 interface ISignUpBlock {
 }
@@ -25,6 +26,7 @@ const SignUpBlock: FC<ISignUpBlock> = () => {
             gsapContext.revert();
         }
     });
+
 
     return(
         <div className="sign-up-block">
