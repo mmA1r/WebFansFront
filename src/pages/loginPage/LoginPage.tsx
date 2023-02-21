@@ -12,9 +12,7 @@ import MiddleFrontLayer from './layers/middleFrontLayer/MiddleFrontLayer';
 import './loginPage.scss';
 
 
-interface ILoginPage {
-
-}
+interface ILoginPage {}
 interface ISetIndex {
     (index: number): any
 }
@@ -29,7 +27,7 @@ const LoginPage: FC<ILoginPage> = () => {
     var mouseY: number | undefined;
     var mult: number = 0.03;
 
-    const setIndex: ISetIndex = (index) => {
+    const setIndex: ISetIndex = (index): any => {
         const timeout: any = setTimeout(() => {
             dispatch(changeSide(index));
         }, 250);
