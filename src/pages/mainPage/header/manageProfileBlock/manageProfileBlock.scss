@@ -1,3 +1,30 @@
 .manage-profile-block {
-    
+    position: relative;
+    margin-right: 20px;
+    display: flex;
+    justify-content: space-around;
+    width: 100px;
+    height: 100%;
+}
+
+.manage-arrow-button {
+    position: relative;
+    width: 25%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    user-select: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+        .manage-block-arrow-elem {
+            fill: #919191;
+        }
+    }
+    &:focus-within {
+        .manage-block-arrow-elem {
+            fill: #919191;
+        }
+    }
 }

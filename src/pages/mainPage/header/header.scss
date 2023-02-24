@@ -5,7 +5,7 @@ $transition-effect: 0.15s ease-in;
 
 .main-page-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     min-height: 50px;
@@ -19,6 +19,27 @@ $transition-effect: 0.15s ease-in;
     width: 40%;
     height: 60%;
     user-select: none;
+
+    &:hover {
+        > .serach-content-input {
+            border-color: #919191;
+            transition: $transition-effect;
+        }
+        .magnifier {
+            stroke: #919191;
+            transition: $transition-effect;
+        }
+    }
+    &:focus-within {
+        > .serach-content-input {
+            border-color: $theme-border-color;
+            transition: $transition-effect;
+        }
+        .magnifier {
+            stroke: $theme-border-color;
+            transition: $transition-effect;
+        }
+    }
 }
 
 .serach-content-input {
@@ -40,26 +61,4 @@ $transition-effect: 0.15s ease-in;
     padding: 5px 5px 5px 32px;
 
     outline: none;
-}
-
-.input-serach-wrapper:hover {
-    > .serach-content-input {
-        border-color: #919191;
-        transition: $transition-effect;
-    }
-    .magnifier {
-        stroke: #919191;
-        transition: $transition-effect;
-    }
-}
-
-.input-serach-wrapper:focus-within {
-    > .serach-content-input {
-        border-color: $theme-border-color;
-        transition: $transition-effect;
-    }
-    .magnifier {
-        stroke: $theme-border-color;
-        transition: $transition-effect;
-    }
 }
