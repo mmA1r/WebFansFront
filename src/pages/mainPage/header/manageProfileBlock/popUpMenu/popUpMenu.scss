@@ -2,9 +2,22 @@
     position: absolute;
     top: 100%;
     right: 0px;
-    background-color: rgba(255, 255, 255, 0.418);
+    background-color: #2e2e2e;
     display: flex;
     height: 0px;
-    width: 200px;
+    width: 250px;
     flex-flow: column;
+    padding: 0px 10px 0px 10px;
+}
+
+.mini-profile-block {
+    height: 15%;
+}
+
+.profile-actions-block {
+    height: 60%;
+}
+
+.settings-block {
+    height: 20%;
 }

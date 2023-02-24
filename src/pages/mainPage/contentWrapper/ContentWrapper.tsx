@@ -5,7 +5,9 @@ interface IContentWrapper {}
 
 const ContentWrapper: FC<IContentWrapper> = () => {
     return(
-        <div className="content-wrapper"></div>
+        <div className="content-wrapper">
+            <div className="shadow-block"/>
+        </div>
     );
 }
 

@@ -27,24 +27,40 @@ const ManageProfileBlock: FC<IManageProfileBlick> = () => {
             target === document.querySelector('.manage-block-arrow-elem')
         ) {
             return isOpenMenu ? closePopUpMenu() : openPopUpMenu();
-        } else if(target !== document.querySelector('.pop-up-menu')) {
+        } else if(
+            target !== document.querySelector('.pop-up-menu') && 
+            target !== document.querySelector('.settings-block') &&
+            target !== document.querySelector('.profile-actions-block') &&
+            target !== document.querySelector('.mini-profile-block')
+        ) {
             return closePopUpMenu();
         }
     }
 
     function openPopUpMenu():void {
+        setIsOpenMenu(1);
         gsap.to('.pop-up-menu', {
-            height: 400,
+            height: 500,
             ease: 'power1.out',
         });
         gsap.to(arrowButton.current, {
             rotateZ: -180,
             duration: .4
         });
-        setIsOpenMenu(1);
+        gsap.to('.profile-actions-block', {
+            borderBottom: '0.5px solid',
+            duration: .4
+        });
+        gsap.to('.manage-button', {
+            height: 20,
+            opacity: 1,
+            duration: .4
+        });
     }
 
     function closePopUpMenu(): void {
+        arrowButton.current.blur();
+        setIsOpenMenu(0);
         gsap.to('.pop-up-menu', {
             height: 0,
             ease: 'power1.out'
@@ -53,12 +69,19 @@ const ManageProfileBlock: FC<IManageProfileBlick> = () => {
             rotateZ: 0,
             duration: .4
         });
-        arrowButton.current.blur();
-        setIsOpenMenu(0);
+        gsap.to('.profile-actions-block', {
+            borderBottom: '0px solid',
+            duration: .4
+        });
+        gsap.to('.manage-button', {
+            height: 0,
+            opacity: 0,
+            duration: .4,
+        });
     }
 
     function checkFocus():any {
-        return isOpenMenu ? arrowButton.current.focus() : null;
+        return isOpenMenu ? arrowButton.current.focus() : arrowButton.current.blur();
     }
 
     return(
