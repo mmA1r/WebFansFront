@@ -3,7 +3,9 @@ import { useNavigate, NavigateFunction } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { useAppSelector } from '../../../../../../../hooks/redux';
 import Server from '../../../../../../../services/server/Server';
+import GearIcon from './gearIcon/GearIcon';
 import './manageButton.scss';
+import LogoutIcon from './logoutIcon/LogoutIcon';
 
 interface IManageButton {
     type: string;
@@ -12,6 +14,18 @@ interface IManageButton {
 const ManageButton: FC<IManageButton> = ({ type }) => {
     const routes = useAppSelector((state) => state.storeRoutes.value);
     const navigate: NavigateFunction = useNavigate();
+    const gearTimeLine: gsap.core.Timeline = gsap.timeline();
+    const logoutTimeLine: gsap.core.Timeline = gsap.timeline();
+
+    const label = function() {
+        switch(type) {
+            case 'logout' :
+                return 'Sign Out';
+            case 'settings' :
+                return 'Settings';
+            default : return null;
+        }
+    }
 
     function onClickRoute():any {
         switch(type) {
@@ -47,12 +61,38 @@ const ManageButton: FC<IManageButton> = ({ type }) => {
 
     }
 
+    function onMouseEnterHandlerAnimation() {
+        if(type === 'settings') {
+            gearTimeLine.progress(1)
+            gearTimeLine.from('.gear', {
+                rotateZ: 180,
+                duration: 0.5,
+            }, '>');
+        } else if(type === 'logout') {
+            logoutTimeLine.progress(1);
+            logoutTimeLine.to('.logout-arrow', {
+                x: 3,
+                repeat: 1,
+                duration: 0.2,
+                yoyo: true
+            }, '>');
+        }
+    }
+
     return(
         <button
             className={`manage-button`}
             onClick={onClickRoute}
+            onMouseEnter={onMouseEnterHandlerAnimation}
         >
-            {type}
+            {
+                type === 'settings' ? 
+                    <GearIcon/> : 
+                type === 'logout' ? 
+                    <LogoutIcon/> : 
+                ''
+            }
+            {label()}
         </button>
     );
 }

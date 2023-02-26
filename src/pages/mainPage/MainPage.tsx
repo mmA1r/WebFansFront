@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import ContentWrapper from './contentWrapper/ContentWrapper';
 import Footer from './footer/Footer';
-import Header from './header/Header';
+import Header from '../modules/header/Header';
 
 import './mainPage.scss';
 

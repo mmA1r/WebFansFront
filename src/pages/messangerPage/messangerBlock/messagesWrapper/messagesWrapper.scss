@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Laila:wght@400&display=swap');
+
+.messages-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 80%;
+    flex-grow: 1;
+    flex-flow: column-reverse;
+}
+
+.message-line {
+    height: 30px;
+    line-height: 30px;
+
+    color: #9c9c9c;
+    font-size: 15px;
+    font-family: 'Laila', sans-serif;
+
+    outline: none;
+}

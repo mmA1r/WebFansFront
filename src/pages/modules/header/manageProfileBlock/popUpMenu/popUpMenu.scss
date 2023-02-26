@@ -7,17 +7,13 @@
     height: 0px;
     width: 250px;
     flex-flow: column;
-    padding: 0px 10px 0px 10px;
 }
 
 .mini-profile-block {
-    height: 15%;
-}
-
-.profile-actions-block {
-    height: 60%;
+    height: 100px;
 }
 
 .settings-block {
-    height: 20%;
+    flex-grow: 1;
+    height: 90px;
 }

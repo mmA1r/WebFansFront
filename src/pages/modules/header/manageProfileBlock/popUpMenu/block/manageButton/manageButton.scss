@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Laila:wght@500&display=swap');
+
+.manage-button {
+    position: relative;
+    border: none;
+    background-color: transparent;
+    color: #bdbdbd;
+    height: 0;
+    opacity: 0;
+    padding-left: 15%;
+    border-radius: 3px;
+
+    font-size: 13px;
+    font-family: 'Laila', sans-serif;
+    letter-spacing: 1px;
+    text-align: left;
+    text-transform: capitalize;
+
+    user-select: none;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #85858580;
+    }
+}
+
+.gear, .menu-logout-icon {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate3d(7px, -50%, 0px);
+    width: 16px;
+    height: 16px;
+    fill: none;
+}
+
+.gear {
+    > .active-gear {
+        fill: #bdbdbd;
+    }
+    > .active-cirlce {
+        stroke: #bdbdbd;
+    }
+}
+
+.menu-logout-icon {
+    width: 23px;
+    transform: translate3d(6px, -50%, 0px);
+    > .logout-arrow, > .logout-door {
+        fill: #bdbdbd;
+    }
+}

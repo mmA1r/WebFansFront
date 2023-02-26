@@ -52,3 +52,15 @@
 body {
     background-color: #1D1D1F;
 }
+
+body::-webkit-scrollbar {
+    width: 5px;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: #494949;
+    border-radius: 3px;
+    border: none;
+}
+body::-webkit-scrollbar-track {
+    background: #333;
+}

@@ -1,0 +1,33 @@
+.message-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    fill: none;
+
+    &:hover {
+        .messge-icon-lower-part {
+            stroke: #919191;
+        }
+        .messge-icon-upper-part {
+            fill: #919191;
+        }
+    }
+    &:active {
+        .messge-icon-lower-part {
+            stroke: #a7a7a7;
+        }
+        .messge-icon-upper-part {
+            fill: #a7a7a7;
+        }
+    }
+}
+
+.messge-icon-lower-part {
+    stroke: #707070;
+}
+
+.messge-icon-upper-part {
+    fill: #707070;
+}

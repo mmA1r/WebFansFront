@@ -76,7 +76,7 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
         const passwordValue: InputValue = passwordInput?.value;
         if(loginValue && passwordValue) {
             if(regex.test(loginValue) && regex.test(passwordValue)) {
-                const data: boolean | null = await Server.login(loginValue, passwordValue);
+                const data: any = await Server.login(loginValue, passwordValue);
                 if(data) {
                     showSuccessMessage();
                     coverInputs('login');

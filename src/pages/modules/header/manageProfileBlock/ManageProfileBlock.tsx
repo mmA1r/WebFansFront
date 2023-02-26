@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import OpenManageBlockArrow from './openManageBlockArrow/OpenManageBlockArrow';
 import UserImage from './userImage/UserImage';
 import PopUpMenu from './popUpMenu/PopUpMenu';
+import MessageButton from './messageButton/MessageButton';
 import './manageProfileBlock.scss';
 
 interface IManageProfileBlick {}
@@ -39,20 +40,19 @@ const ManageProfileBlock: FC<IManageProfileBlick> = () => {
 
     function openPopUpMenu():void {
         setIsOpenMenu(1);
+        const buttonsCount = document.querySelectorAll('.manage-button').length;
+        const buttonHeight = 30;
+        const menuHeight = 150 + buttonHeight * buttonsCount;
         gsap.to('.pop-up-menu', {
-            height: 500,
+            height: menuHeight,
             ease: 'power1.out',
         });
         gsap.to(arrowButton.current, {
             rotateZ: -180,
             duration: .4
         });
-        gsap.to('.profile-actions-block', {
-            borderBottom: '0.5px solid',
-            duration: .4
-        });
         gsap.to('.manage-button', {
-            height: 20,
+            height: buttonHeight,
             opacity: 1,
             duration: .4
         });
@@ -69,10 +69,6 @@ const ManageProfileBlock: FC<IManageProfileBlick> = () => {
             rotateZ: 0,
             duration: .4
         });
-        gsap.to('.profile-actions-block', {
-            borderBottom: '0px solid',
-            duration: .4
-        });
         gsap.to('.manage-button', {
             height: 0,
             opacity: 0,
@@ -87,7 +83,8 @@ const ManageProfileBlock: FC<IManageProfileBlick> = () => {
     return(
         <div
             className='manage-profile-block'
-        >
+        >   
+            <MessageButton/>
             <UserImage/>
             <button
                 className='manage-arrow-button'
