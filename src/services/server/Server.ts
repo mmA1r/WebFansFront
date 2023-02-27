@@ -106,14 +106,8 @@ const Server = class Server implements IServer {
                 message,
                 senderId
             };
-            const data: any = await this.exactSend(method, params);
-            if(data?.data) {
-                this.chatHash = data.data;
-                return true;
-            }
-            return false;
+            return await this.exactSend(method, params);
         }
-        return false;
     }
 
     async getMessages() {

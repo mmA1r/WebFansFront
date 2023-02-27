@@ -10,7 +10,7 @@ const MessagesWrapper: FC<IMessagesWrapper> = () => {
     useEffect(() => {
         const getMessagesInterval: NodeJS.Timer = setInterval(() => {
             getMessages();
-        }, 600);
+        }, 400);
 
         return () => clearInterval(getMessagesInterval);
     });
@@ -18,7 +18,6 @@ const MessagesWrapper: FC<IMessagesWrapper> = () => {
     async function getMessages() {
         const newMessages = await server.getMessages();
         if(newMessages) {
-            console.log(messages)
             if(newMessages.length !== messages.length) {
                 return setMessages(newMessages.reverse());
             }
