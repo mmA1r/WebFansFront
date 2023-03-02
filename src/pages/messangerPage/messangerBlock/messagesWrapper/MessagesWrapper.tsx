@@ -16,9 +16,14 @@ const MessagesWrapper: FC<IMessagesWrapper> = () => {
     });
 
     async function getMessages() {
-        const newMessages = await server.getMessages();
-        if(newMessages) {
-            if(newMessages.length !== messages.length) {
+        const allMessages = await server.getMessages();
+        if(allMessages) {
+            if(allMessages.length !== messages.length) {
+                const user = await server.getUser();
+                const newMessages = allMessages.map(message => {
+                    message.senderId === user.id ? message.self = true : message.self = false;
+                    return message;
+                });
                 return setMessages(newMessages.reverse());
             }
         }
@@ -29,9 +34,17 @@ const MessagesWrapper: FC<IMessagesWrapper> = () => {
             {
                 messages.map((message:any) => {
                     return(
-                        <p key={message.id} className="message-line">
-                            {`${message.senderName}: ${message.message}`}
-                        </p>
+                        <div
+                            key={message.id} 
+                            className={`message-item ${ message.self ? 'your-message' : ''}`}
+                        >
+                            <div className={`message-image`}></div>
+                            <div className="message-block">
+                                <p className="message-line">
+                                    {`${message.message.join("\r\n")}`}
+                                </p>
+                            </div>
+                        </div>
                     )
                 })
             }

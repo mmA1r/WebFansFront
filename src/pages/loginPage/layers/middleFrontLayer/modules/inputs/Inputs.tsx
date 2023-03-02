@@ -106,7 +106,7 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
         if(nameValue && loginValue && passwordValue) {
             if(regex.test(nameValue) && regex.test(loginValue) && regex.test(passwordValue)) {
                 const data: { data: boolean } = await Server.registration(nameValue, loginValue, passwordValue);
-                if(data.data) {
+                if(data?.data) {
                     coverInputs('registration');
                     showSuccessMessage();
                     const tl: NodeJS.Timeout = setTimeout(() => {

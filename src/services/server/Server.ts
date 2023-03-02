@@ -1,13 +1,13 @@
 interface IServer {
     exactSend(method: string, params: any): Promise<any>;
-    postSend(method: string, params: any): any;
+    postExactSend(method: string, params: any): any;
     //user//
     registration(name: string, login: string, password: string): Promise<any>;
     login(login: string, password: string): Promise<any>;
     logout(): Promise<boolean>;
     getUser(): Promise<any>;
     //messanger//
-    sendGeneralMessage(message: string, senderId: number): Promise<boolean>;
+    sendGeneralMessage(message: string[], senderId: number): Promise<boolean>;
     getMessages(): Promise<any>;
 }
 
@@ -22,14 +22,42 @@ const Server = class Server implements IServer {
         this.chatHash = '1';
     }
 
-    async exactSend(mathod: string, params: any) {
+    async exactSend(method: string, params: any) {
         const query = Object.values(params).join('/');
-        const response = await fetch(`/api/${mathod}/${query}`);
-        const answer: any = await response.json();
+        try {
+            const response = await fetch(`/api/${method}/${query}`);
+            const answer: any = await response.json();
+            return answer?.result === 'ok' ? answer?.data : null;
+        } catch(e) {
+            console.log(e);
+        }
+    }
+
+    async postExactSend(method: string, params: any) {
+        const responce = await fetch(`/api/${method}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(params)
+        });
+        const answer = await responce.json();
         return answer?.result === 'ok' ? answer?.data : null;
     }
 
-    async postSend() {}
+    async testSend(message: string, senderId: number) {
+        if((message && senderId) || (senderId === 0 && message)) {
+            const method: string = 'test';
+            const params: { message: string, senderId: number } = {
+                message,
+                senderId
+            };
+            return await this.postExactSend(method, params);
+        }
+    }
+
+
+
     /****************/
     /****  USER  ****/
     /****************/
@@ -54,7 +82,7 @@ const Server = class Server implements IServer {
                 password
             };
             const data: any = await this.exactSend(method, params);
-            const token: Token = data.data.token;
+            const token: Token = data?.data.token;
             if(token) {
                 this.token = token;
                 localStorage.setItem('token', token);
@@ -99,14 +127,14 @@ const Server = class Server implements IServer {
     /****  MESSANGER  ****/
     /*********************/
 
-    async sendGeneralMessage(message: string, senderId: number) {
+    async sendGeneralMessage(message: string[], senderId: number) {
         if((message && senderId) || (senderId === 0 && message)) {
             const method: string = 'sendGeneralMessage';
-            const params: { message: string, senderId: number } = {
+            const params: { message: string[], senderId: number } = {
                 message,
                 senderId
             };
-            return await this.exactSend(method, params);
+            return await this.postExactSend(method, params);
         }
     }
 
