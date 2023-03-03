@@ -19,7 +19,7 @@ const Server = class Server implements IServer {
     
     constructor(token: Token) {
         this.token = token || null;
-        this.chatHash = '1';
+        this.chatHash = Math.random().toString(32).substring(2); // random init hash
     }
 
     async exactSend(method: string, params: any) {
@@ -44,18 +44,6 @@ const Server = class Server implements IServer {
         const answer = await responce.json();
         return answer?.result === 'ok' ? answer?.data : null;
     }
-
-    async testSend(message: string, senderId: number) {
-        if((message && senderId) || (senderId === 0 && message)) {
-            const method: string = 'test';
-            const params: { message: string, senderId: number } = {
-                message,
-                senderId
-            };
-            return await this.postExactSend(method, params);
-        }
-    }
-
 
 
     /****************/
@@ -152,6 +140,9 @@ const Server = class Server implements IServer {
         return null;
     }
 
+    async zeroingChatHash() {
+        return this.chatHash = Math.random().toString(32).substring(2);
+    }
 }
 
 const localToken: Token = localStorage.getItem('token') || null;

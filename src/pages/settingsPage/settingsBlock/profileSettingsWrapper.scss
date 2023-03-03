@@ -1,0 +1,12 @@
+.profile-settings-wrapper {
+    position: relative;
+    display: grid;
+    width: 80%;
+    height: calc(100% - 50px);
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 20% 80%;
+    grid-template-areas: 
+        'A B'
+        'C D'
+    ;
+}

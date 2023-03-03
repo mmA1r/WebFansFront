@@ -9,11 +9,18 @@ const MessagesWrapper: FC<IMessagesWrapper> = () => {
 
     useEffect(() => {
         const getMessagesInterval: NodeJS.Timer = setInterval(() => {
-            getMessages();
+            return getMessages();
         }, 400);
 
-        return () => clearInterval(getMessagesInterval);
+        return () => {
+            clearInterval(getMessagesInterval);
+            clearChatHash();
+        };
     });
+
+    async function clearChatHash() {
+        return await server.zeroingChatHash();
+    }
 
     async function getMessages() {
         const allMessages = await server.getMessages();

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import ROUTES from "../routes/routes";
+import ROUTES from "../../routes/routes";
 
 interface IRoutesState {
     value: any

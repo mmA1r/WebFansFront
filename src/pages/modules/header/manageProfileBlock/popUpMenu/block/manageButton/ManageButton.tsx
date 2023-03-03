@@ -45,20 +45,16 @@ const ManageButton: FC<IManageButton> = ({ type }) => {
     }
 
     function routeToLoginPage():void {
-        gsap.set('.shadow-block', {
-            zIndex: 100
-        });
-        gsap.to('.shadow-block', {
-            opacity: 1,
-            duration: .5
-        });
+        showShadowBlock();
         setTimeout(() => {
             return navigate(routes.login.path);
         }, 500);
     }
 
     function routeToSettingsPage():void {
-
+        setTimeout(() => {
+            return navigate(routes.settings.path);
+        }, 500);
     }
 
     function onMouseEnterHandlerAnimation() {
@@ -77,6 +73,16 @@ const ManageButton: FC<IManageButton> = ({ type }) => {
                 yoyo: true
             }, '>');
         }
+    }
+
+    function showShadowBlock():void {
+        gsap.set('.shadow-block', {
+            zIndex: 100
+        });
+        gsap.to('.shadow-block', {
+            opacity: 1,
+            duration: .5
+        });
     }
 
     return(

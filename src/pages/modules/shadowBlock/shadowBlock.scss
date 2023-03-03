@@ -1,0 +1,9 @@
+.shadow-block {
+    position: fixed;
+    background-color: #000000ab;
+    opacity: 0;
+    z-index: -100;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+}

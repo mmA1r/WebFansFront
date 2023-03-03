@@ -1,6 +1,4 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-//import currentTheme from "./features/theme";
-//import server from "./features/server";
 import storeRoutes from "./features/routes";
 import currentSlide from "./features/currentSlide";
 

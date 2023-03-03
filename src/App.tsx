@@ -4,6 +4,7 @@ import LoginPage from './pages/loginPage/LoginPage';
 import NotFoundPage from './pages/notFoundPage/NotFoundPage';
 import MainPage from './pages/mainPage/MainPage';
 import MessangerPage from './pages/messangerPage/MessangerPage';
+import SettingsPage from './pages/settingsPage/SettingsPage';
 
 import './app.scss';
 
@@ -28,6 +29,10 @@ export default function App() {
                 <Route 
                     path={routes.messanger.path}
                     element={<MessangerPage/>}
+                />
+                <Route 
+                    path={routes.settings.path}
+                    element={<SettingsPage/>}
                 />
                 <Route 
                     path={routes.notFound.path}
