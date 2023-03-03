@@ -25,7 +25,7 @@ const MessagesSenderBlock: FC<IMessagesSenderBlock> = () => {
 
     async function send(message: string[]) {
         const user = await server.getUser();
-        await server.sendGeneralMessage(message, user.id);
+        await server.sendPublicMessage(message, user.id);
     }
 
     function enterSend(e: any):void {

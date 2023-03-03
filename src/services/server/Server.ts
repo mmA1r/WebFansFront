@@ -7,7 +7,7 @@ interface IServer {
     logout(): Promise<boolean>;
     getUser(): Promise<any>;
     //messanger//
-    sendGeneralMessage(message: string[], senderId: number): Promise<boolean>;
+    sendPublicMessage(message: string[], senderId: number): Promise<boolean>;
     getMessages(): Promise<any>;
 }
 
@@ -109,7 +109,7 @@ const Server = class Server implements IServer {
     }
 
     async getUser() {
-        const method: string = 'getUser';
+        const method: string = 'getUserByToken';
         const params: { token: Token } = {
             token: this.token
         }
@@ -127,9 +127,9 @@ const Server = class Server implements IServer {
     /****  MESSANGER  ****/
     /*********************/
 
-    async sendGeneralMessage(message: string[], senderId: number) {
+    async sendPublicMessage(message: string[], senderId: number) {
         if((message && senderId) || (senderId === 0 && message)) {
-            const method: string = 'sendGeneralMessage';
+            const method: string = 'sendPublicMessage';
             const params: { message: string[], senderId: number } = {
                 message,
                 senderId

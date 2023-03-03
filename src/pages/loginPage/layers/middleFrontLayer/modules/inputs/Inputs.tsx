@@ -16,6 +16,10 @@ interface IInputs {
 type DivElem = HTMLDivElement | null;
 type Input = HTMLInputElement | null;
 type InputValue = string | undefined;
+type CheckInputObj = {
+    wrapper: DivElem,
+    input: Input
+}
 
 const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
     const regex: RegExp = /^[A-Za-z0-9_-]{3,16}$/;
@@ -74,6 +78,7 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
         const passwordInput: Input = document.querySelector('.password-input-login-page');
         const loginValue: InputValue = loginInput?.value;
         const passwordValue: InputValue = passwordInput?.value;
+
         if(loginValue && passwordValue) {
             if(regex.test(loginValue) && regex.test(passwordValue)) {
                 const data: any = await Server.login(loginValue, passwordValue);
@@ -93,7 +98,16 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
                 }
             }
         }
-        checkInputs([loginInput, passwordInput]);
+        
+        const loginInputCheck: CheckInputObj = { 
+            wrapper: document.querySelector('.login-input-wrapper-login-page'), 
+            input: loginInput 
+        };
+        const passwordInputWrapper: CheckInputObj = {
+            wrapper: document.querySelector('.password-input-wrapper-login-page'), 
+            input: passwordInput
+        };
+        checkInputs([loginInputCheck, passwordInputWrapper]);
     }
 
     async function signUp() {
@@ -103,6 +117,7 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
         const nameValue: InputValue = nameInput?.value;
         const loginValue: InputValue = loginInput?.value;
         const passwordValue: InputValue = passwordInput?.value;
+
         if(nameValue && loginValue && passwordValue) {
             if(regex.test(nameValue) && regex.test(loginValue) && regex.test(passwordValue)) {
                 const data: { data: boolean } = await Server.registration(nameValue, loginValue, passwordValue);
@@ -120,7 +135,20 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
                 }
             }
         }
-        checkInputs([nameInput, loginInput, passwordInput]);
+
+        const nameInputWrapper: CheckInputObj = {
+            wrapper: document.querySelector('.name-input-wrapper-registration-page'), 
+            input: nameInput
+        };
+        const loginInputWrapper: CheckInputObj = {
+            wrapper: document.querySelector('.login-input-wrapper-registration-page'), 
+            input: loginInput
+        };
+        const passwordInputWrapper: CheckInputObj = {
+            wrapper: document.querySelector('.password-input-wrapper-registration-page'), 
+            input: passwordInput
+        };
+        checkInputs([nameInputWrapper, loginInputWrapper, passwordInputWrapper]);
     }
 
     function showErrorMessage(loginInput: Input, passwordInput: Input = null): void {
@@ -167,18 +195,18 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
         });
     }
 
-    function checkInputs(inputsArr: Input[]): void {
-        inputsArr.forEach(input => {
-            const inputValue: InputValue = input?.value;
+    function checkInputs(inputsArr: CheckInputObj[]): void {
+        inputsArr.forEach(inputCheck => {
+            const inputValue: InputValue = inputCheck.input?.value;
             if(!inputValue || !regex.test(inputValue)) {
-                gsap.to(input, {
+                gsap.to(inputCheck.wrapper, {
                     borderColor: 'red',
                     duration: 0.08,
                     repeat: 5,
                     yoyo: true
                 });
-                if(input) {
-                    input.value = '';
+                if(inputCheck.input) {
+                    inputCheck.input.value = '';
                 }
             }
         });
@@ -207,7 +235,7 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
             <div className='inputs-form'>
                 {types.map(type => {
                     return (
-                        <div key={type} className={`input-wrapper ${type}-input`}>
+                        <div key={type} className={`input-wrapper ${type}-input-wrapper-${types.length === 2 ? 'login-page' : 'registration-page'}`}>
                             <div className={`input-cover ${types.length === 2 ? 'login-page-input-cover' : 'registration-page-input-cover'}`}/>
                             <input
                                 onKeyUp={send}
