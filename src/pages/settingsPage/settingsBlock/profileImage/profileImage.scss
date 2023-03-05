@@ -1,3 +1,37 @@
 .profile-image {
+    position: relative;
     grid-area: A;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas: 
+        'IMG T1'
+        'IMG T2'
+    ;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+.settings-profile-image-wrapper {
+    width: 80%;
+    padding: 40% 0px;
+    margin: 0px 5%;
+    grid-area: IMG;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.settings-profile-name {
+    align-self: flex-end;
+    margin-left: 5%;
+    font-size: 15px;
+}
+
+.settings-user-name {
+    align-self: flex-start;
+    margin-left: 5%;
+    font-size: 25px;
 }

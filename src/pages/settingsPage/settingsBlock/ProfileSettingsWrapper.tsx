@@ -9,6 +9,7 @@ import './profileSettingsWrapper.scss';
 interface IProfileSettingsWrapper {}
 
 const ProfileSettingsWrapper: FC<IProfileSettingsWrapper> = () => {
+
     return(
         <div className="profile-settings-wrapper">
             <ProfileImage/>

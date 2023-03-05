@@ -9,6 +9,8 @@ interface IROUTES {
     content: Route,
     messanger: Route,
     settings: Route,
+    settingsProfile: Route,
+    settingsLocation: Route,
     notFound: Route
 }
 
@@ -18,6 +20,8 @@ const ROUTES: IROUTES = {
     content: {path: '/main', title: 'content'},
     messanger: {path: '/messanger', title: 'messages'},
     settings: {path: '/settings', title: 'settings'},
+    settingsProfile: {path: '/settings/profile', title: 'profileSettings'},
+    settingsLocation: {path: '/settings/location', title: 'locationSettings'},
     notFound: {path: '*', title: 'notFound'}
 }
 

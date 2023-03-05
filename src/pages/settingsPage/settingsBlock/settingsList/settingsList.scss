@@ -1,3 +1,8 @@
 .settings-list {
+    position: relative;
+    display: flex;
+    flex-flow: column;
     grid-area: C;
+    border: none;
+    border-right: 1px solid gray;
 }

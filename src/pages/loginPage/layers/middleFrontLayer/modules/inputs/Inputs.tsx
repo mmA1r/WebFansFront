@@ -68,8 +68,13 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
 
     function send(e: any):void {
         if(e.keyCode === 13) {
-            const loginButton: DivElem = document.querySelector('.login-button');
-            return loginButton?.click();
+            if(types.length === 2) {
+                const loginButton: DivElem = document.querySelector('.login-button-login-page');
+                return loginButton?.click();
+            } else if(types.length === 3) {
+                const loginButton: DivElem = document.querySelector('.login-button-registration-page');
+                return loginButton?.click();
+            }
         }
     }
 
@@ -251,7 +256,7 @@ const Inputs: FC<IInputs> =  ({ types, title, routeButton }) => {
             </div>
             <div className='login-buttons-block'>
                 <button
-                    className="login-button"
+                    className={`login-button ${types.length === 2 ? 'login-button-login-page' : 'login-button-registration-page'}`}
                     onMouseEnter={mouseEnterHandler}
                     onMouseLeave={mouseLeaveHandler}
                     onClick={ types.length === 2 ? signIn : signUp }

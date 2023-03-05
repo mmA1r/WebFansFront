@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Laila:wght@400&display=swap');
+@import '../../../modules/header/header.scss';
 
 .messages-sender-block {
     display: flex;
@@ -18,9 +19,10 @@
 .send-messages-input {
     width: 100%;
     height: 100%;
-    border: none;
     padding: 3px;
     background-color: #474747;
+    border: 0px transparent;
+    transition: $transition-effect;
 
     font-size: 15px;
     font-family: 'Laila', sans-serif;
@@ -41,6 +43,14 @@
     &::-webkit-scrollbar-track {
         background: #333;
     }
+    &:hover {
+        transition: $transition-effect;
+        border: 0.5px solid gray;
+    }
+    &:focus-within {
+        transition: $transition-effect;
+        border: 0.5px solid gold;
+    }
 }
 
 .send-message-button {
@@ -50,12 +60,17 @@
     border-right: 1px solid #5a5a5a;
     border-left: 1px solid #5a5a5a;
     background-color: #1a1a1a;
+    transition: $transition-effect;
     color: white;
 
     &:hover {
+        transition: $transition-effect;
         background-color: #3f3f3f;
+        border-color: rgb(208, 177, 0);
     }
     &:active {
+        transition: $transition-effect;
         background-color: #4d4d4d;
+        border-color: gold;
     }
 }

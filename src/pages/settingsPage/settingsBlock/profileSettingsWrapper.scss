@@ -1,12 +1,31 @@
 .profile-settings-wrapper {
     position: relative;
     display: grid;
-    width: 80%;
+    width: 70%;
     height: calc(100% - 50px);
-    grid-template-columns: 35% 65%;
+    grid-template-columns: 25% 75%;
+    row-gap: 20px;
     grid-template-rows: 20% 80%;
     grid-template-areas: 
         'A B'
         'C D'
     ;
+
+    padding: 35px 0px;
+}
+
+@media screen and (min-width: 280px) {
+
+}
+
+@media screen and (min-width: 768px) {
+    
+}
+
+@media screen and (min-width: 1200px) {
+    
+}
+
+@media screen and (min-width: 2560px) {
+    
 }

@@ -1,3 +1,17 @@
-.setting-name {
+.setting-name-wrapper {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    padding-left: 20px;
     grid-area: B;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+.setting-name {
+    font-size: 40px;
+}
+
+.setting-name-description {
+    font-size: 19px;
 }

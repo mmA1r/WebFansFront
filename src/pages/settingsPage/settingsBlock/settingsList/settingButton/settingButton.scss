@@ -1,0 +1,32 @@
+.setting-button-wrapper {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    margin: 10px 0px;
+}
+
+.setting-button-cover {
+    position: absolute;
+    inset: 0;
+    width: 0px;
+    border: none;
+    color: gray;
+    background-color: rgb(62, 62, 62);
+    height: 100%;
+
+    z-index: -1;
+}
+
+.setting-button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding-left: 25px;
+    text-align: left;
+    
+
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    background-color: transparent;
+}
