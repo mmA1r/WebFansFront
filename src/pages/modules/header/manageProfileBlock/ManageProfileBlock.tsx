@@ -43,37 +43,55 @@ const ManageProfileBlock: FC<IManageProfileBlick> = () => {
         const buttonsCount = document.querySelectorAll('.manage-button').length;
         const buttonHeight = 30;
         const menuHeight = 150 + buttonHeight * buttonsCount;
-        gsap.to('.pop-up-menu', {
+        const tl: gsap.core.Timeline = gsap.timeline();
+        tl.set('.pop-up-menu', {
+            display: 'flex'
+        });
+        tl.to('.pop-up-menu', {
             height: menuHeight,
             ease: 'power1.out',
-        });
-        gsap.to(arrowButton.current, {
+        }, '>');
+        tl.to(arrowButton.current, {
             rotateZ: -180,
             duration: .4
-        });
-        gsap.to('.manage-button', {
+        }, '<');
+        tl.to('.manage-button', {
             height: buttonHeight,
             opacity: 1,
             duration: .4
-        });
+        }, '<');
+        tl.to('.theme-changer-button, .sun-icon, .moon-icon', {
+            height: 30,
+            width: 30,
+            duration: 0.4
+        }, '<');
     }
 
     function closePopUpMenu(): void {
         arrowButton.current.blur();
         setIsOpenMenu(0);
-        gsap.to('.pop-up-menu', {
+        const tl: gsap.core.Timeline = gsap.timeline();
+        tl.to('.pop-up-menu', {
             height: 0,
             ease: 'power1.out'
-        });
-        gsap.to(arrowButton.current, {
+        }, '<');
+        tl.to(arrowButton.current, {
             rotateZ: 0,
             duration: .4
-        });
-        gsap.to('.manage-button', {
+        }, '<');
+        tl.to('.manage-button', {
             height: 0,
             opacity: 0,
             duration: .4,
-        });
+        }, '<');
+        tl.to('.theme-changer-button, .sun-icon, .moon-icon', {
+            height: 0,
+            width: 0,
+            duration: 0.4
+        }, '<');
+        tl.set('.pop-up-menu', {
+            display: 'none'
+        }, '>');
     }
 
     function checkFocus():any {

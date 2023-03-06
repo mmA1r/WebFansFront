@@ -1,3 +1,5 @@
+@import '../../../../../consts.scss';
+
 .setting-button-wrapper {
     position: relative;
     width: 100%;
@@ -25,7 +27,7 @@
     text-align: left;
     
     font-family: 'Laila', sans-serif;
-    color: #bdbdbd;
+    color: $theme-text-color;
 
     cursor: pointer;
     outline: none;

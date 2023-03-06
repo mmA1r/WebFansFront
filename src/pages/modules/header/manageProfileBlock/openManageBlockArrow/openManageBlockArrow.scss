@@ -1,3 +1,4 @@
+@import '../../header.scss';
 .open-manage-block-arrow {
     position: relative;
     display: block;
@@ -7,5 +8,5 @@
 }
 
 .manage-block-arrow-elem {
-    fill: #707070;
+    fill: $theme-gray-elem;
 }

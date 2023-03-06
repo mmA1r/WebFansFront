@@ -8,6 +8,9 @@ import './index.scss';
 
 const store = setupStore();
 
+const theme: string = localStorage.getItem('theme') || 'dark';
+document.body.classList.add(theme);
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -19,4 +22,3 @@ root.render(
         </BrowserRouter>
     </Provider>
 );
-

@@ -59,11 +59,11 @@
 }
 
 .constellation-stars {
-    fill: $theme-text-color;
+    fill: $theme-text-color-login-page;
 }
 
 .constellation-path {
-    stroke: $theme-text-color;
+    stroke: $theme-text-color-login-page;
 }
 
 .succsess-message {
@@ -77,7 +77,7 @@
     font-family: 'Junge', serif;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: $theme-text-color;
+    color: $theme-text-color-login-page;
     opacity: 0;
     z-index: 6;
 }

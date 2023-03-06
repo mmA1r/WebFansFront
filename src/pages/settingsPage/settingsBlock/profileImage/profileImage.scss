@@ -1,3 +1,4 @@
+@import '../../../../consts.scss';
 .profile-image {
     position: relative;
     grid-area: A;
@@ -30,12 +31,12 @@
     align-self: flex-end;
     margin-left: 5%;
     font-size: 15px;
-    color: #bdbdbd;
+    color: $theme-text-color;
 }
 
 .settings-user-name {
     align-self: flex-start;
     margin-left: 5%;
     font-size: 25px;
-    color: #bdbdbd;
+    color: $theme-text-color;
 }

@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
 import { gsap } from 'gsap';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../../../../../hooks/redux';
+import { useAppSelector } from '../../../../../hooks/redux';
 import RouteButton from './routeButton/RouteButton';
-import Server from '../../../../../../services/server/Server';
+import Server from '../../../../../services/server/Server';
 
 import './inputs.scss';
 

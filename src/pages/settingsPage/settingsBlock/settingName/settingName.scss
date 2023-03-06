@@ -1,3 +1,4 @@
+@import '../../../../consts.scss';
 .setting-name-wrapper {
     display: flex;
     flex-flow: column;
@@ -18,5 +19,5 @@
 
 .setting-name-description, .setting-name {
     font-family: 'Laila', sans-serif;
-    color: #bdbdbd;
+    color: $theme-text-color;
 }

@@ -11,30 +11,30 @@
 
     &:hover {
         .messge-icon-lower-part {
-            stroke: #919191;
+            stroke: $theme-hover;
             transition: $transition-effect;
         }
         .messge-icon-upper-part {
-            fill: #919191;
+            fill: $theme-hover;
             transition: $transition-effect;
         }
     }
     &:active {
         .messge-icon-lower-part {
-            stroke: #bdbdbd;
+            stroke: $theme-text-color;
             transition: $transition-effect;
         }
         .messge-icon-upper-part {
-            fill: #bdbdbd;
+            fill: $theme-text-color;
             transition: $transition-effect;
         }
     }
 }
 
 .messge-icon-lower-part {
-    stroke: #777777;
+    stroke: $theme-gray-elem;
 }
 
 .messge-icon-upper-part {
-    fill: #777777;
+    fill: $theme-gray-elem;
 }

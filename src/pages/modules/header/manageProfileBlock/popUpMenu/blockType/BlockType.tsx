@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import ManageButton from './manageButton/ManageButton';
-import './block.scss';
+import './blockType.scss';
 
 interface IBlock {
     blockType: string,

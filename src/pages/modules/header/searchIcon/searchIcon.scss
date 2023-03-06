@@ -12,7 +12,7 @@
 }
 
 .magnifier {
-    stroke: #919191;
+    stroke: $theme-hover;
     stroke-width: 0.5px;
     transition: $transition-effect;
 }

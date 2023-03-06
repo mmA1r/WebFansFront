@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Junge&display=swap');
-@import '../../../../../../consts.scss';
+@import '../../../../../consts.scss';
 
 .info-submit-block {
     position: absolute;
@@ -20,7 +20,7 @@
     top: -100%;
     width: 100%;
     min-height: 30px;
-    color: $theme-text-color;
+    color: $theme-text-color-login-page;
     background-color: transparent;
     font-size: 18px;
     margin: 10px 0px;
@@ -62,7 +62,7 @@
 .user-input {
     width: 100%;
     height: 100%;
-    color: $theme-text-color;
+    color: $theme-text-color-login-page;
     background-color: $theme-route-color;
     border: 1px solid $theme-border-color;
     padding: 0 5px 0 5px;
@@ -133,7 +133,7 @@
     inset: 0;
     height: 100%;
     width: 0;
-    background-color: $theme-text-color;
+    background-color: $theme-text-color-login-page;
 }
 
 .login-button-title {
@@ -143,7 +143,7 @@
     align-items: center;
     text-transform: capitalize;
     font-family: 'Junge', serif;
-    color: $theme-text-color;
+    color: $theme-text-color-login-page;
     width: 100%;
     height: 100%;
     inset: 0;

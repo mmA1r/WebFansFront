@@ -5,7 +5,7 @@
     position: relative;
     border: none;
     background-color: transparent;
-    color: #bdbdbd;
+    color: $theme-text-color;
     height: 0;
     opacity: 0;
     padding-left: 15%;
@@ -39,10 +39,10 @@
 
 .gear {
     > .active-gear {
-        fill: #bdbdbd;
+        fill: $theme-text-color;
     }
     > .active-cirlce {
-        stroke: #bdbdbd;
+        stroke: $theme-text-color;
     }
 }
 
@@ -50,6 +50,6 @@
     width: 23px;
     transform: translate3d(6px, -50%, 0px);
     > .logout-arrow, > .logout-door {
-        fill: #bdbdbd;
+        fill: $theme-text-color;
     }
 }

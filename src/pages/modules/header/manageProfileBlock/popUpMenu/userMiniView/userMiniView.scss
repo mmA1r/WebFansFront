@@ -1,0 +1,29 @@
+.user-mini-view {
+    position: relative;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas: 
+        'MINI_IMG CNG_BTN'
+        'MINI_IMG VIEW_PROF'
+    ;
+    height: 100px;
+    width: 100%;
+}
+
+.change-theme-button-main-page {
+    grid-area: CNG_BTN;
+    justify-self: right;
+    align-self: center;
+    padding-right: 10%;
+    & > .theme-changer-button {
+        position: relative;
+        inset: 0;
+        width: 0;
+        height: 0;
+    }
+    .sun-icon, .moon-icon {
+        width: 0;
+        height: 0;
+    }
+}

@@ -1,7 +1,7 @@
 import { FC, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
-import ThemeChangerButton from '../modules/themeChangeButton/ThemeChangeButton';
-import Inputs from '../modules/inputs/Inputs';
+import ThemeChangerButton from '../../../../modules/themeChangeButton/ThemeChangeButton';
+import Inputs from '../inputs/Inputs';
 
 import './signInBlock.scss';
 

@@ -44,34 +44,34 @@ const ThemeChangerButton: FC<IThemeChangerButton> = () => {
         const style = getComputedStyle(document.documentElement);
 
         const lightStyleColors: colors = {
-            border: style.getPropertyValue('--light-border'),
-            particle: style.getPropertyValue('--light-particle'),
-            header: style.getPropertyValue('--light-header'),
-            layerBack: style.getPropertyValue('--light-back-layer'),
-            layerFront: style.getPropertyValue('--light-front-layer'),
-            routeColor: style.getPropertyValue('--light-route-color'),
-            textColor: style.getPropertyValue('--light-text-color'),
+            border: style.getPropertyValue('--light-border-login-page'),
+            particle: style.getPropertyValue('--light-particle-login-page'),
+            header: style.getPropertyValue('--light-header-login-page'),
+            layerBack: style.getPropertyValue('--light-back-layer-login-page'),
+            layerFront: style.getPropertyValue('--light-front-layer-login-page'),
+            routeColor: style.getPropertyValue('--light-route-color-login-page'),
+            textColor: style.getPropertyValue('--light-text-color-login-page'),
         }
         const darkStyleColors: colors = {
-            border: style.getPropertyValue('--dark-border'),
-            particle: style.getPropertyValue('--dark-particle'),
-            header: style.getPropertyValue('--dark-header'),
-            layerBack: style.getPropertyValue('--dark-back-layer'),
-            layerFront: style.getPropertyValue('--dark-front-layer'),
-            routeColor: style.getPropertyValue('--dark-route-color'),
-            textColor: style.getPropertyValue('--dark-text-color'),
+            border: style.getPropertyValue('--dark-border-login-page'),
+            particle: style.getPropertyValue('--dark-particle-login-page'),
+            header: style.getPropertyValue('--dark-header-login-page'),
+            layerBack: style.getPropertyValue('--dark-back-layer-login-page'),
+            layerFront: style.getPropertyValue('--dark-front-layer-login-page'),
+            routeColor: style.getPropertyValue('--dark-route-color-login-page'),
+            textColor: style.getPropertyValue('--dark-text-color-login-page'),
         }
         if(theme === 'dark') {
             localStorage.setItem('theme', 'light');
             setTheme('light');
             gsap.to('body', {
-                '--theme-border-color': `${lightStyleColors.border}`,
-                '--theme-border-particle': `${lightStyleColors.particle}`,
-                '--theme-footer-header-color': `${lightStyleColors.header}`,
-                '--theme-layer-back-color': `${lightStyleColors.layerBack}`,
-                '--theme-layer-front-color': `${lightStyleColors.layerFront}`,
-                '--theme-route-color': `${lightStyleColors.routeColor}`,
-                '--theme-text-color': `${lightStyleColors.textColor}`,
+                '--theme-border-color-login-page': `${lightStyleColors.border}`,
+                '--theme-border-particle-login-page': `${lightStyleColors.particle}`,
+                '--theme-footer-header-color-login-page': `${lightStyleColors.header}`,
+                '--theme-layer-back-color-login-page': `${lightStyleColors.layerBack}`,
+                '--theme-layer-front-color-login-page': `${lightStyleColors.layerFront}`,
+                '--theme-route-color-login-page': `${lightStyleColors.routeColor}`,
+                '--theme-text-color-login-page': `${lightStyleColors.textColor}`,
                 duration: 1,
                 ease: "sine.inOut"
             });
@@ -106,13 +106,13 @@ const ThemeChangerButton: FC<IThemeChangerButton> = () => {
                 opacity: 1
             });
             gsap.to('body', {
-                '--theme-border-color': `${darkStyleColors.border}`,
-                '--theme-border-particle': `${darkStyleColors.particle}`,
-                '--theme-footer-header-color': `${darkStyleColors.header}`,
-                '--theme-layer-back-color': `${darkStyleColors.layerBack}`,
-                '--theme-layer-front-color': `${darkStyleColors.layerFront}`,
-                '--theme-route-color': `${darkStyleColors.routeColor}`,
-                '--theme-text-color': `${darkStyleColors.textColor}`,
+                '--theme-border-color-login-page': `${darkStyleColors.border}`,
+                '--theme-border-particle-login-page': `${darkStyleColors.particle}`,
+                '--theme-footer-header-color-login-page': `${darkStyleColors.header}`,
+                '--theme-layer-back-color-login-page': `${darkStyleColors.layerBack}`,
+                '--theme-layer-front-color-login-page': `${darkStyleColors.layerFront}`,
+                '--theme-route-color-login-page': `${darkStyleColors.routeColor}`,
+                '--theme-text-color-login-page': `${darkStyleColors.textColor}`,
                 duration: 1,
                 ease: "sine.inOut"
             });
