@@ -13,6 +13,8 @@
 
     border: none;
     border-bottom: 1px solid gray;
+
+    font-family: 'Laila', sans-serif;
 }
 
 .settings-profile-image-wrapper {
@@ -28,10 +30,12 @@
     align-self: flex-end;
     margin-left: 5%;
     font-size: 15px;
+    color: #bdbdbd;
 }
 
 .settings-user-name {
     align-self: flex-start;
     margin-left: 5%;
     font-size: 25px;
+    color: #bdbdbd;
 }

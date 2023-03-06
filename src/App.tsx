@@ -5,11 +5,9 @@ import NotFoundPage from './pages/notFoundPage/NotFoundPage';
 import MainPage from './pages/mainPage/MainPage';
 import MessangerPage from './pages/messangerPage/MessangerPage';
 import SettingsPage from './pages/settingsPage/SettingsPage';
+import ProfileSettingsWrapper from './pages/settingsPage/settingsBlock/ProfileSettingsWrapper';
 
 import './app.scss';
-import ShadowBlock from './pages/modules/shadowBlock/ShadowBlock';
-import Header from './pages/modules/header/Header';
-import ProfileSettingsWrapper from './pages/settingsPage/settingsBlock/ProfileSettingsWrapper';
 
 export default function App() {
     const routes = useAppSelector(state => state.storeRoutes.value);
@@ -39,11 +37,11 @@ export default function App() {
                 >
                     <Route 
                         path={'profile'}
-                        element={<ProfileSettingsWrapper/>}
+                        element={<ProfileSettingsWrapper settingType={1}/>}
                     />
                     <Route 
                         path={'location'}
-                        element={<ProfileSettingsWrapper/>}
+                        element={<ProfileSettingsWrapper settingType={2}/>}
                     />
                 </Route>
                 <Route 

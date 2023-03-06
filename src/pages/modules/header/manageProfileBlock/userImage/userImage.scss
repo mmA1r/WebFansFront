@@ -1,4 +1,14 @@
 .user-image-mini {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 60%;
     height: 100%;
+}
+
+.some-img {
+    padding: 20% 20%;
+    background-color: black;
+    border-radius: 50%;
 }

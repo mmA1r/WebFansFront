@@ -5,7 +5,9 @@ interface IUserImage {}
 
 const UserImage: FC<IUserImage> = () => {
     return(
-        <div className="user-image-mini"></div>
+        <div className="user-image-mini">
+            <div className="some-img"></div>
+        </div>
     );
 }
 

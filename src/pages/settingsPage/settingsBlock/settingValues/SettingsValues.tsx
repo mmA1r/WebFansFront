@@ -1,11 +1,22 @@
 import { FC } from "react";
+import LocationValues from "./locationValues/LocationValues";
+import ProfileValues from "./profileValues/ProfileValues";
 import './settingsValues.scss';
 
-interface ISettingsValues {}
+interface ISettingsValues {
+    settingType: number;
+        // 1 - general profile
+        // 2 - location
+}
 
-const SettingsValues: FC<ISettingsValues> = () => {
+const SettingsValues: FC<ISettingsValues> = ({ settingType }) => {
     return(
-        <div className="setting-values"></div>
+        <div className="setting-values">
+            {
+                settingType === 1 ? <ProfileValues/> : 
+                settingType === 2 ? <LocationValues/> : ''
+            }
+        </div>
     );
 }
 

@@ -6,16 +6,19 @@ import SettingsValues from './settingValues/SettingsValues';
 
 import './profileSettingsWrapper.scss';
 
-interface IProfileSettingsWrapper {}
+interface IProfileSettingsWrapper {
+    settingType: number;
+        // 1 - profile general
+        // 2 - location
+}
 
-const ProfileSettingsWrapper: FC<IProfileSettingsWrapper> = () => {
-
+const ProfileSettingsWrapper: FC<IProfileSettingsWrapper> = ({ settingType }) => {
     return(
         <div className="profile-settings-wrapper">
             <ProfileImage/>
-            <SettingName/>
+            <SettingName settingType={settingType}/>
             <SettingsList/>
-            <SettingsValues/>
+            <SettingsValues settingType={settingType}/>
         </div>
     );
 }

@@ -1,3 +1,5 @@
+@import '../../../header.scss';
+
 .message-icon {
     position: absolute;
     top: 0;
@@ -5,29 +7,34 @@
     width: 30px;
     height: 100%;
     fill: none;
+    transition: $transition-effect;
 
     &:hover {
         .messge-icon-lower-part {
             stroke: #919191;
+            transition: $transition-effect;
         }
         .messge-icon-upper-part {
             fill: #919191;
+            transition: $transition-effect;
         }
     }
     &:active {
         .messge-icon-lower-part {
-            stroke: #a7a7a7;
+            stroke: #bdbdbd;
+            transition: $transition-effect;
         }
         .messge-icon-upper-part {
-            fill: #a7a7a7;
+            fill: #bdbdbd;
+            transition: $transition-effect;
         }
     }
 }
 
 .messge-icon-lower-part {
-    stroke: #707070;
+    stroke: #777777;
 }
 
 .messge-icon-upper-part {
-    fill: #707070;
+    fill: #777777;
 }
