@@ -53,7 +53,7 @@ const ManageButton: FC<IManageButton> = ({ type }) => {
 
     function routeToSettingsPage():void {
         setTimeout(() => {
-            return navigate(routes.settings.path);
+            return navigate(routes.settingsProfile.path);
         }, 500);
     }
 
