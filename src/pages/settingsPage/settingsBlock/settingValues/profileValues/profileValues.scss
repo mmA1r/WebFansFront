@@ -1,3 +1,20 @@
 .profile-settings-type-values {
-    background-color: #7c7c7c;
+    position: relative;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas: 
+        'INF_INPT AVA_INPT'
+        'INF_INPT COV_INPT'
+    ;
+}
+
+.drag-and-drop-image-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 200px;
+    height: 200px;
+    border: 1px dashed black;
 }

@@ -1,8 +1,9 @@
+@import '../../../consts.scss';
 .profile-settings-wrapper {
     position: relative;
     display: grid;
     width: 70%;
-    height: calc(100% - 50px);
+    height: calc(100% - 100px);
     grid-template-columns: 25% 75%;
     row-gap: 20px;
     grid-template-rows: 20% 80%;
@@ -10,8 +11,9 @@
         'A B'
         'C D'
     ;
-
-    padding: 35px 0px;
+    margin: 10px 0px;
+    border-top: 1px solid $theme-border-particle;
+    border-radius: 7%;
 }
 
 @media screen and (min-width: 280px) {

@@ -1,26 +1,27 @@
 @import '../../../../consts.scss';
 .profile-image {
     position: relative;
-    grid-area: A;
+    grid-area: B;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 75% 25%;
     grid-template-rows: 50% 50%;
     grid-template-areas: 
-        'IMG T1'
-        'IMG T2'
+        'T1 IMG'
+        'T2 IMG'
     ;
     justify-content: center;
     align-items: center;
 
     border: none;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid $theme-gray-elem;
 
     font-family: 'Laila', sans-serif;
 }
 
 .settings-profile-image-wrapper {
-    width: 80%;
-    padding: 40% 0px;
+    justify-self: center;
+    width: 44%;
+    padding: 22% 0px;
     margin: 0px 5%;
     grid-area: IMG;
     background-color: black;
@@ -29,14 +30,14 @@
 
 .settings-profile-name {
     align-self: flex-end;
-    margin-left: 5%;
+    justify-self: right;
     font-size: 15px;
     color: $theme-text-color;
 }
 
 .settings-user-name {
     align-self: flex-start;
-    margin-left: 5%;
+    justify-self: right;
     font-size: 25px;
     color: $theme-text-color;
 }

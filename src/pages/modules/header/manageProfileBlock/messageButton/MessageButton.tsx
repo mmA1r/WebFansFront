@@ -10,6 +10,7 @@ interface IMessageButton {}
 const MessageButton: FC<IMessageButton> = () => {
     const navigte: NavigateFunction = useNavigate();
     const routes = useAppSelector(state => state.storeRoutes.value);
+    
     function routeToChat(): void {
         return navigte(routes.messanger.path);
     }

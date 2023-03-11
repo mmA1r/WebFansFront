@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Laila:wght@300&display=swap');
 
 $header-footer-height: clamp(70px, 15%, 170px);
+$transition-effect: 0.15s ease-in;
+$font: 'Laila', sans-serif;
 
 $theme-border-color: var(--theme-border-color-login-page);
 $theme-border-particle: var(--theme-border-particle-login-page);

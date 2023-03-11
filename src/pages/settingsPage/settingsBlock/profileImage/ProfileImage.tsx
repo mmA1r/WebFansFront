@@ -13,7 +13,16 @@ const ProfileImage: FC<IProfileImage> = () => {
 
     async function getUser() {
         const user:any = await server.getUser();
-        return setUserName(user.name);
+        setUserName(user.name);
+        return;
+    }
+
+    function createImage(image: any) {
+        const imageEl = document.createElement('img');
+        imageEl.src = URL.createObjectURL(image)
+        console.log(imageEl)
+        document.querySelector('.settings-profile-image-wrapper')?.append(imageEl)
+        URL.revokeObjectURL(imageEl.src);
     }
 
     return(

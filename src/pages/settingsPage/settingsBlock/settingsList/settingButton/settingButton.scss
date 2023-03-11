@@ -12,8 +12,8 @@
     inset: 0;
     width: 0px;
     border: none;
-    color: gray;
-    background-color: #3e3e3e;
+    color: $theme-gray-elem;
+    background-color: $theme-dim-hover;
     height: 100%;
 
     z-index: -1;

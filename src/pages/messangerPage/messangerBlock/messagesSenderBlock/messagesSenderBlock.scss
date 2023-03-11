@@ -67,11 +67,11 @@
     &:hover {
         transition: $transition-effect;
         background-color: $theme-dim-hover;
-        border-color: rgb(208, 177, 0);
+        border-color: $theme-border-color;
     }
     &:active {
         transition: $transition-effect;
         background-color: $theme-dim-border;
-        border-color: gold;
+        border-color: $theme-border-particle;
     }
 }
