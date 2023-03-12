@@ -3,14 +3,14 @@ import Hash from "../../hooks/hash";
 interface IServer {
     exactSend(method: string, params: any, isHashToken?: boolean): Promise<any>;
     postExactSend(method: string, params: any, isHashToken?: boolean): Promise<any>;
-    formDataSend(method: string, params: any, isHashToken?: boolean): Promise<any>;
+    formDataSend(method: string, params: any, file?: File, isHashToken?: boolean): Promise<any>;
     //user//
     registration(name: string, login: string, password: string): Promise<any>;
     login(login: string, password: string): Promise<any>;
     logout(): Promise<boolean>;
     getUser(): Promise<any>;
-    uploadUserImage(image: File, type: string): Promise<any>;
-    getUserImage(image: any, type: string): Promise<any>;
+    uploadImage(image: File, type: string): Promise<any>;
+    getImage(type: string): Promise<any>;
     //messanger//
     sendPublicMessage(message: string[], senderId: number): Promise<boolean>;
     getMessages(): Promise<any>;
@@ -57,7 +57,7 @@ const Server = class Server implements IServer {
         return answer?.result === 'ok' ? answer?.data : null;
     }
 
-    async formDataSend(method: string, params: any, isHashToken:boolean = true) {
+    async formDataSend(method: string, params: any, file:File , isHashToken:boolean = true) {
         const tokenHash = Hash.implictToken(this.token, params);
         const sendParams = Object.assign(tokenHash, params);
         const formData = new FormData();
@@ -66,6 +66,7 @@ const Server = class Server implements IServer {
             formData.append(param[0], param[1]);
             return;
         });
+        formData.append('image', file);
         const responce = await fetch(`/api/${method}`, {
             method: 'POST',
             body: formData
@@ -136,30 +137,39 @@ const Server = class Server implements IServer {
             guid: this.guid
         }
         const preData: any = await this.exactSend(method, params);
-        const data = preData.data;
+        const data = preData?.data;
         if(preData) {
             return data;
         }
         return null;
     }
 
-    async uploadUserImage(image: File, type: string) {
-        const method: string = 'uploadAvatar';
-        const params: { token: Token, image: File } = {
-            token: this.token,
-            image: image,
+    async uploadImage(image: File, type:string) {
+        const method:string = (
+            type === 'avatar' ? 'uploadAvatar' : 
+            type === 'cover' ? 'uploadCover' : ''
+        );
+        const params: { guid: Token } = {
+            guid: this.guid,
         }
-        return await this.formDataSend(method, params);
+        await this.formDataSend(method, params, image);
+        setTimeout(() => {
+            window.location.reload();
+            return;
+        }, 1000);
     }
 
-    async getUserImage(type: string) {
-        const method: string = 'getUserImage';
-        const params: { token: Token, type: string } = {
-            token: this.token,
+    async getImage(type: string) {
+        const method: string = 'getImage';
+        const params: { guid: Token, type: string } = {
+            guid: this.guid,
             type: type
         }
         const data = await this.postExactSend(method, params);
-        return;
+        if(data) {
+            return data?.data;
+        }
+        return null;
     }
 
     /*********************/

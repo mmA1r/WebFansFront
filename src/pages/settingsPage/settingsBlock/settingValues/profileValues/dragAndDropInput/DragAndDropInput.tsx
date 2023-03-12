@@ -41,9 +41,13 @@ const DragAndDropInput: FC<IDragAndDropInput> = ({ inputType }) => {
     }
 
     async function handleFile(file: File) {
-        const type: string = file.type.replace(/\/.+/, '');
-        if(type === 'image') {
-            await server.uploadUserImage(file, 'avatar');
+        const fileType: string = file.type.replace(/\/.+/, '');
+        const type: string = (
+            inputType === 1 ? 'avatar' : 
+            inputType === 2 ? 'cover' : ''
+        );
+        if(fileType === 'image') {
+            await server.uploadImage(file, type);
         }
         return;
     }

@@ -19,13 +19,34 @@
 }
 
 .settings-profile-image-wrapper {
+    position: relative;
     justify-self: center;
     width: 44%;
     padding: 22% 0px;
-    margin: 0px 5%;
     grid-area: IMG;
-    background-color: black;
     border-radius: 50%;
+}
+
+.user-options-mini-avatar-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100px;
+    height: 100px;
+    object-fit:cover;
+    border-radius: 50%;
+}
+
+.sceleton-settings-page-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #0a0a0a;
 }
 
 .settings-profile-name {
